@@ -1,8 +1,5 @@
 # PArray
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/parray`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Convert enumerable objects into **p**arallelized **array**s.
 
 ## Installation
 
@@ -22,7 +19,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+By using `parallelize`, you can convert enumerable objects into parallelized arrays. In enumerable operations, parallelized arrays use multiple threads to execute each block concurrently. The default size of threads is 2.
+
+```ruby
+[1] pry(main)> include PArray::API
+
+[2] pry(main)> a = parallelize([1, 2, 3])
+=> #<PArray:0x00007fd786872840 @arr=[1, 2, 3], @in_threads=2>
+
+[3] pry(main)> a.map { |i| sleep(rand); p i; i * 2 }
+2
+3
+1
+=> [2, 4, 6]
+```
+
+You can also use `PArray.parallelize` to convert enumerable objects.
+
+```ruby
+[1] pry(main)> a = PArray.parallelize([1, 2, 3])
+=> #<PArray:0x00007fd7863283a8 @arr=[1, 2, 3], @in_threads=2>
+```
 
 ## Development
 
