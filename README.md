@@ -1,5 +1,5 @@
 # PArray
-Convert enumerable objects into **p**arallelized **array**s.
+**P**arallelized **array** which executes each block concurrrently in enumerable operations
 
 ## Installation
 
